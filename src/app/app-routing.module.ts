@@ -7,7 +7,7 @@ import {NewsListResolver} from './news-list/news-list.resolver';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './news-list/news-list.module#NewsListModule'
+    loadChildren: () => import('./news-list/news-list.module').then(m => m.NewsListModule)
   },
   {
     path: '**',

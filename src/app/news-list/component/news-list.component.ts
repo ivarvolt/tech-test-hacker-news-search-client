@@ -12,7 +12,7 @@ import {HackerNewsResponse} from '../dto/hacker-news-response';
   encapsulation: ViewEncapsulation.None,
 })
 export class NewsListComponent implements OnInit {
-  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild('paginator', { static: true }) paginator: MatPaginator;
   
   news: HackerNewsResponse;
   searchInput = '';
