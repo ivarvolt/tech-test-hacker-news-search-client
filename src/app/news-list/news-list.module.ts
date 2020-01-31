@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NewsListResolver} from './news-list.resolver';
-import {NewsListComponent} from './component/news-list.component';
-import {CoreModule} from '../core/core.module';
+import {NewsListComponent} from './news-list.component';
+import {SharedModule} from '../common/shared.module';
 import {NewsListRoutingModule} from './news-list-routing.module';
+import { NewsListCardComponent } from './news-list-card/news-list-card.component';
 
 @NgModule({
   declarations: [
     NewsListComponent,
+    NewsListCardComponent,
   ],
   imports: [
     CommonModule,
     NewsListRoutingModule,
-    CoreModule,
+    SharedModule,
   ],
   providers: [
     NewsListResolver

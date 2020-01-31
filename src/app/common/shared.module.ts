@@ -34,4 +34,4 @@ const moduleImport = [
     moduleImport
   ]
 })
-export class CoreModule { }
+export class SharedModule { }

@@ -5,9 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {CoreModule} from './core/core.module';
+import {SharedModule} from './common/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +15,7 @@ import {CoreModule} from './core/core.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
+    SharedModule,
     BrowserAnimationsModule,
 
   ],

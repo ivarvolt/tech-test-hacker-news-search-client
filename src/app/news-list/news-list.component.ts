@@ -1,9 +1,8 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import {NewsListService} from '../news-list.service';
+import {NewsListService} from './news-list.service';
 import {ActivatedRoute} from '@angular/router';
-import {NewsListResolver} from '../news-list.resolver';
-import {HackerNewsResponse} from '../dto/hacker-news-response';
+import {HackerNewsResponse} from './interfaces/hacker-news-response';
 
 @Component({
   selector: 'app-news-list',
@@ -13,27 +12,27 @@ import {HackerNewsResponse} from '../dto/hacker-news-response';
 })
 export class NewsListComponent implements OnInit {
   @ViewChild('paginator', { static: true }) paginator: MatPaginator;
-  
+
   news: HackerNewsResponse;
   searchInput = '';
   isLoadingNews = true;
   newsCount = 0;
   pageSize = this.newsListService.defaultPageSize;
   pageSizeOptions: number[] = [20, 40, 80, 160];
-  
+
   constructor(private newsListService: NewsListService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.news = this.route.snapshot.data['news'] as HackerNewsResponse;
     this.updateNewsData(this.news);
   }
-  
+
   doAutomaticSearch(searchWord: string) {
     if (searchWord.length >= 6) {
       this.getNewsBySearch(searchWord);
     }
   }
-  
+
   pageEvent(event: PageEvent) {
     this.isLoadingNews = true;
     if (this.searchInput !== '') {
@@ -42,7 +41,7 @@ export class NewsListComponent implements OnInit {
       this.getFrontPageNews(event.pageIndex, event.pageSize);
     }
   }
-  
+
   getNewsBySearch(searchWord: string, page?: number, pageSize?: number) {
     this.paginator.firstPage();
     this.isLoadingNews = true;
@@ -50,17 +49,13 @@ export class NewsListComponent implements OnInit {
       this.updateNewsData(news);
     });
   }
-  
+
   private getFrontPageNews(page?: number, pageSize?: number) {
     this.newsListService.getFrontPageNews(page, pageSize).subscribe((news: HackerNewsResponse) => {
       this.updateNewsData(news);
     });
   }
-  
-  getCommentPageUrl(itemId: number) {
-    this.newsListService.getCommentPageUrl(itemId);
-  }
-  
+
   private updateNewsData(news: HackerNewsResponse) {
     this.news = news;
     this.newsCount = news.nbHits;

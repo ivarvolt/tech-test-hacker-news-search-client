@@ -10,16 +10,9 @@
   </mat-form-field>
   <mat-spinner *ngIf="isLoadingNews" class="d-flex mx-auto"></mat-spinner>
   <div *ngIf="!isLoadingNews">
-    <mat-card class="py-1 mt-1" *ngFor="let hit of news.hits">
-      <mat-card-header>
-        <mat-card-title><a target="_blank" [href]="hit.url">{{hit.title}}</a></mat-card-title>
-        <mat-card-subtitle class="mb-1">
-          <p>{{hit.points}} points by {{hit.author}} {{hit.created_at | date:'dd MMM yy hh:mm'}} |
-            <a target="_blank" [href]="getCommentPageUrl(hit.objectID)">{{hit.num_comments}} comments</a>
-          </p>
-        </mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
+    <ng-container *ngFor="let article of news.hits">
+      <news-list-card [article]="article"></news-list-card>
+    </ng-container>
   </div>
   <mat-paginator #paginator class="d-flex justify-content-center"
                  [length]="newsCount"
