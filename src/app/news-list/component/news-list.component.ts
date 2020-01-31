@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {MatPaginator, PageEvent} from '@angular/material';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import {NewsListService} from '../news-list.service';
 import {ActivatedRoute} from '@angular/router';
 import {NewsListResolver} from '../news-list.resolver';
