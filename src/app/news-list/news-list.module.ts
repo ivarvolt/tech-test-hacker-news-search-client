@@ -4,7 +4,7 @@ import {NewsListResolver} from './news-list.resolver';
 import {NewsListComponent} from './news-list.component';
 import {SharedModule} from '../common/shared.module';
 import {NewsListRoutingModule} from './news-list-routing.module';
-import { NewsListCardComponent } from './news-list-card/news-list-card.component';
+import { NewsListCardComponent } from './card/news-list-card.component';
 
 @NgModule({
   declarations: [

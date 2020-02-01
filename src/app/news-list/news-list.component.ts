@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {HackerNewsResponse} from './interfaces/hacker-news-response';
 
 @Component({
-  selector: 'app-news-list',
+  selector: 'news-list',
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -24,12 +24,14 @@ export class NewsListComponent implements OnInit {
 
   ngOnInit() {
     this.news = this.route.snapshot.data['news'] as HackerNewsResponse;
-    this.updateNewsData(this.news);
+    if (this.news) {
+      this.updateNewsData(this.news);
+    }
   }
 
-  doAutomaticSearch(searchWord: string) {
-    if (searchWord.length >= 6) {
-      this.getNewsBySearch(searchWord);
+  doAutomaticSearch() {
+    if (this.searchInput.length >= 6) {
+      this.getNewsBySearch(this.searchInput);
     }
   }
 

@@ -3,8 +3,8 @@
     <input matInput type="search" placeholder="Search for news"
            [(ngModel)]="searchInput"
            (keyup.enter)="getNewsBySearch(searchInput)"
-           (keyup)="doAutomaticSearch(searchInput)">
-    <button matSuffix mat-button (click)="getNewsBySearch(searchInput)">
+           (keyup)="doAutomaticSearch()">
+    <button id="searchButton" matSuffix mat-button (click)="getNewsBySearch(searchInput)">
       <i class="material-icons">search</i>
     </button>
   </mat-form-field>

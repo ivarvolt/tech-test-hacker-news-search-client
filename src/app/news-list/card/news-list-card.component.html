@@ -1,0 +1,10 @@
+<mat-card class="py-1 mt-1">
+  <mat-card-header>
+    <mat-card-title><a target="_blank" [href]="article?.url">{{article?.title}}</a></mat-card-title>
+    <mat-card-subtitle class="mb-1">
+      <p>{{article?.points}} points by {{article?.author}} {{article?.created_at | date:'dd MMM yy hh:mm'}} |
+        <a target="_blank" [href]="getCommentPageUrl(article?.objectID)">{{article?.num_comments}} comments</a>
+      </p>
+    </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
