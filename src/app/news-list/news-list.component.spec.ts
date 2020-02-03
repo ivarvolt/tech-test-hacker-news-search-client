@@ -71,7 +71,7 @@ describe('NewsListComponent interaction', () => {
     fixture.detectChanges();
   });
 
-  it('should not crash with empty resolver return', () => {
+  it('should not error without initialization data', () => {
     expect(component).toBeTruthy();
   });
 

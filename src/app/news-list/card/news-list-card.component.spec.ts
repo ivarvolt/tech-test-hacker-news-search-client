@@ -39,7 +39,7 @@ describe('NewsListCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should not crash without a article', () => {
+  it('should not error without initialization data', () => {
     expect(component).toBeTruthy();
   });
 
